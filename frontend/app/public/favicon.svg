@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+<desc>Created with Fabric.js 1.7.22</desc>
+<defs>
+</defs>
+<g transform="translate(128 128) scale(0.72 0.72)" style="">
+	<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)" >
+	<path d="M 45 19.798 l -5.64 0 c -11.5 2.571 -20.094 12.839 -20.094 25.114 v 29.563 C 26.474 75.822 32.495 81.815 35.46 90 h 3.617 c 0.724 -7.616 0.213 -19.717 -1.656 -27.098 c -4.739 -3.261 -7.869 -8.709 -9.79 -15.801 l 14.588 5.221 l 0.831 6.191 H 45 C 48.126 46.35 47.802 33.368 45 19.798 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(80,100,110); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+	<path d="M 45 19.798 l 5.64 0 c 11.5 2.571 20.094 12.839 20.094 25.114 v 29.563 C 63.526 75.822 57.505 81.815 54.54 90 h -3.617 c -0.724 -7.616 -0.213 -19.717 1.656 -27.098 c 4.739 -3.261 7.869 -8.709 9.79 -15.801 l -14.588 5.221 l -0.831 6.191 H 45 V 19.798 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(55,71,79); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+	<path d="M 45 0 c -2.977 0 -5.954 0.676 -8.931 2.029 l 5.776 31.193 H 45 C 47.966 22.148 47.966 11.074 45 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(244,67,53); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+	<path d="M 45 0 c 2.977 0 5.954 0.676 8.931 2.029 l -5.776 31.193 H 45 V 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(227,0,17); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+</g>
+</g>
+</svg>
