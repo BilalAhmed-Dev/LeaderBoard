@@ -56,7 +56,7 @@ To run the application locally follow the steps below
 
 ---
 
-**Cloud Deployment diagram architecture** : [LeaderBoardDiagram.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/LeaderBoardDiagram.drawio) download and open with a tool like [diagrams.net](https://app.diagrams.net/)
+**Cloud Deployment diagram architecture** : [LeaderBoardDiagram.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/LeaderBoardDiagram.drawio) download and open with a tool like [diagrams](https://app.diagrams.net/)
 
 The cloud deployment guide uses Azure AKS service, you need to have a valid Azure subscription and sufficient access to the required services.
 
