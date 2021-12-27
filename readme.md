@@ -1,11 +1,15 @@
 ### Overview:
 
-This is a horizontally scalable leaderboard application for a game that has active players. Leaderboard will be sorted according to the money each player has earned since the start of the week. The leaderboard will reset each week **or once the Click here anchor is clicked**"for testing purposes". Once the
-leaderboard resets, the top 100 players will be rewarded with in-game money according to their rankings and everything will start over.
+---
+
+This is a horizontally scalable leaderboard application for a game that has active players. Leaderboard will be sorted according to the money each player has earned since the start of the week. The leaderboard will reset each week **or once the Click here anchor is clicked**" for testing purposes". Once the
+Leaderboard resets, the top 100 players will be rewarded with in-game money according to their rankings and everything will start over.
 
 ### Application Features:
 
-- Architecture of the system are horizontally scalable.
+---
+
+- Architecture of the system is horizontally scalable.
 
 - High Performance (Thanks to the power of Kubernetes and Azure Cloud)
 
@@ -13,11 +17,11 @@ leaderboard resets, the top 100 players will be rewarded with in-game money acco
 
 - Display top 100 players.
 
-- If the players below or above the logged in user are not one of the top 100 they will be displayed at the end of the table along with the logged in user as follows: 2 below and 3 above and above them the top 100 players.
+- If the players below or above the logged-in user are not one of the top 100 they will be displayed at the end of the table along with the logged-in user as follows: 2 below and 3 above and above them the top 100 players.
 
-- The logged in user row will be highlighted
+- The logged-in user row will be highlighted
 
-- The players Daily Diff will be 0 initially but once the user starts adding scores the Daily Diff will change to 1 if the player rank increases and -1 if it decreases and if the player remains at the same rank, The Daily Diff will be 0.
+- The player's Daily Diff will be 0 initially but once the user starts adding scores the Daily Diff will change to 1 if the player rank increases and -1 if it decreases and if the player remains at the same rank, The Daily Diff will be 0.
 
 - The Daily Diff number will be yellow if 0, green if 1, red if -1.
 
@@ -29,6 +33,8 @@ leaderboard resets, the top 100 players will be rewarded with in-game money acco
 4. The remaining prize will be given to the other players in the top 100 in order to the rank of the players.
 
 ### Deployment Guide
+
+---
 
 The application has been designed to be deployed in two ways locally and on the cloud.
 
@@ -46,10 +52,15 @@ To run the application locally follow the steps below
 1. chmod 777 quickstart.sh
 2. ./quickstart.sh
 
-**Cloud Deployment Guide**
+### Cloud Deployment Guide
+
+---
+
+**Cloud Deployment diagram architecture** : [LeaderBoardDiagram.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/LeaderBoardDiagram.drawio)
+
 The cloud deployment guide uses Azure AKS service, you need to have a valid Azure subscription and sufficient access to the required services.
 
-Login to azure and open azure cloud shell, for this example we are using the bash terminal
+Login to Azure and open azure cloud shell, for this example we are using the bash terminal
 
 - Create Resource Group
 - New-AzResourceGroup -Name DemoResource -Location "East US"
@@ -62,7 +73,7 @@ Login to azure and open azure cloud shell, for this example we are using the bas
 - Create AKS Cluster
 
 ```
-az aks create --resource-group DemoResource --name DemoAks \
+--az aks create --resource-group DemoResource --name DemoAks \
 --enable-addons monitoring,http_application_routing \
 --kubernetes-version 1.22.2 --generate-ssh-keys \
 --service-principal 712fb770-ce3f-4bf2-a8bd-1fe6fc9941aa --client-secret UQjpOZ.YZr0j1KP6BYg9rQryH9lmzrvlhb --node-count 2 \
@@ -73,7 +84,7 @@ az aks create --resource-group DemoResource --name DemoAks \
 --max-count 5
 ```
 
-- Get Credentails
+- Get Credentials
 
 ```
  - az aks get-credentials --resource-group DemoResource --name DemoAks
@@ -96,14 +107,14 @@ az acr create --resource-group DemoResource --name TempDemoACR --sku Basic --adm
   - Note Make sure to have user access role assignment and user access administrator assignment in AD to avoid permission errors
   - ACR Script [Link](https://github.com/jaydestro/aks-acr-all-in-one)
 
-- Get the Azure repostory dns name
+- Get the Azure repository DNS name
 
 ```
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-- Update all the K8s images urls in the deployment file
-- For this steps you will need to tag and push the images, if you are unable to do this using azure cli you can run docker compose locally then tag and push the images
+- Update all the K8s images URLs in the deployment file
+- For these steps, you will need to tag and push the images, if you are unable to do this using azure CLI you can run docker-compose locally then tag and push the images
 
   - docker tag nodejs-redis-docker_backend:v1 <acrLoginServer>/ nodejs-redis-docker_backend:v1
   - docker tag nodejs-redis-docker_frontendv1 <acrLoginServer>/ nodejs-redis-docker_frontend:v1
@@ -127,52 +138,39 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 
 ### How to use the application
 
-**Front End**
+---
 
-- In the login page you can either login by inserting a userId in the input
+###Front End
 
-  - Use one of these
-    61c90744f449d0a7614bd1df
-    61c90744f449d0a7614bd1e0
-    61c90744f449d0a7614bd1e1
-    61c90744f449d0a7614bd1e2
-    61c90744f449d0a7614bd1e3
-    61c90744f449d0a7614bd1e4
-    61c90744f449d0a7614bd1e5
-    61c90744f449d0a7614bd1e6
-    61c90744f449d0a7614bd1e7
-    61c90744f449d0a7614bd1e8
-    61c90744f449d0a7614bd1e9
-    61c90744f449d0a7614bd1ea
-    61c90744f449d0a7614bd1eb
-    61c90744f449d0a7614bd1ec
-    61c90744f449d0a7614bd1ed
-    61c90744f449d0a7614bd1ee
-    61c90744f449d0a7614bd1ef
-    61c90744f449d0a7614bd1f0
-    Or you can skip the login process by clicking the Skip button and you will be redirected to the Leaderboard page.
+- On the login page you can either login by inserting a userId in the input
 
-- In the leader board page if there is a game in progress you the user will be able to see a table that has record of top 100 player as well as the logged in user if there is one and if the user is logged in his name will be highlighted.
+  - Use the back end API to create a new user "Check the back end section for more info" and use the returned user userId to login
 
-  - If the logged in user rank is below 100, the user will be displayed along with 2 player below him and 3 above him and then the top 100 players
-    - If there no game in progress the leaderboard table will be empty untill players start playing and gain scores in order for it to display in the leader board
-    - For testing purposes the tester can use a tool like postman to mimick a player gaining score by using the addScore API end point (calling the endpoint will be explaind in the backend section)
+    - Or you can skip the log-in process by clicking the Skip button and you will be redirected to the Leaderboard page.
+
+- In the leader board page if there is a game in progress you the user will be able to see a table that has a record of the top 100 players as well as the logged in user if there is one and if the user is logged in his name will be highlighted.
+
+  - If the logged-in user rank is below 100, the user will be displayed along with 2 players below him and 3 above him, and then the top 100 players
+    - If there is no game in progress the leaderboard table will be empty until players start playing and gain scores for it to display on the leaderboard
+    - For testing purposes, the tester can use a tool like postman to mimic a player gaining score by using the addScore API endpoint (calling the endpoint will be explained in the backend section)
 
 - The user can use the navigation on the left to navigate between pages
-- In the PrizePoolTable page if a week has already past since the start of players playing and gaining scores Prizes will be distributed among 100 players according to what has been explained in the Overview sections.
-  - For testing purposes there an anchor tag that is called "Click me" it will trigger the end of game without the need to wait a whole week, which will reset everything and prizes will be dsitributed among top 100 players.
+- On the PrizePoolTable page if a week has already passed since the start of players playing and gaining scores Prizes will be distributed among 100 players according to what has been explained in the Overview sections.
+  - For testing purposes, there is an anchor tag that is called "Click me" it will trigger the end of the game without the need to wait a whole week, which will reset everything and prizes will be distributed among the top 100 players.
 
-**Back End**
+###Back End
 
-- The backend should be running on a server
+---
+
+- The backend can run locally and on a server
 - **important**: The API POST request expects the body data to
-  come in a `x-www-form-urlencoded` format and not as JSON
+  come in an `x-www-form-urlencoded` format and not as JSON
 
-- Use a tool like [postman](https://www.postman.com/) to reach the API end points
+- Use a tool like [postman](https://www.postman.com/) to reach the API endpoints
 
-####The end points
+###The endpoints
 
-1- http://TheHost/api/signup
+1- http://localhost/api/signup
 
 - a POST request with this body data :
   - userName=YourUserName
@@ -180,20 +178,20 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
     - The response is ` New User has been created successfully` and a **userId**
     - you can use the **userId** in the response to **login** in the newly created user.
 
-2- http://TheHost/api/login
+2- http://locahost/api/login
 
 - a POST request with this body data :
   - userId=YourUserId
     - The response is `User login status` and a status of 1 or 0
-    - 1 means you are logged in, 0 means no user exist with the inserted userId
+    - 1 means you are logged in, 0 means no user exists with the inserted userId
 
-3- http://TheHost/api/logout
+3- http://locahost/api/logout
 
 - a POST request with this body data :
   - userId=YourUserId
     - The response is `User Logged out Successfully`
 
-4- http://TheHost/api/addNewScore
+4- http://locahost/api/addNewScore
 
 - note : A **user must be logged in to add a score** to any other user
 - a POST request with this body data :
@@ -204,25 +202,33 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
     - or The response is
       ` {'status': 'Player is not online!'}`"whichs means you need to log in first"
 
-5- http://TheHost/api/getTop100
+5- http://locahost/api/getTop100
 
 - a POST request with body data Or **nothing at all** :
 
   - userId=YourUserId
-  - if you do not pass a userId only the top 100 player will be displayed.
-    - for example if your player rank is 140 you will not be able to see your player unless you pass a userId (login), once logged in you will be able to see your player rank and 2 player below you and 3 player above you and the top 100 players.
+  - if you do not pass a userId only the top 100 players will be displayed.
+    - for example if your player rank is 140 you will not be able to see your player unless you pass a userId (login), once logged in you will be able to see your player rank and 2 players below you and 3 players above you and the top 100 players.
 
-- The response is an Array of Objects containing top 100 players sorted in a ascending order from 1 to 100
+- The response is an Array of Objects containing the top 100 players sorted in ascending order from 1 to 100
 
-6- http://TheHost/api/triggerEndGame
+6- http://locahost/api/triggerEndGame
 
-- a POST request with no body data.
+- a POST request with empty or no body data.
   - The response is `Ok!`
-    - which means the end of the week has been triggerd and the PrizePoolTable has been filled with data displaying the results
+    - which means the end of the week has been triggered and the PrizePoolTable has been filled with data displaying the results
 
-7- http://TheHost/api/getPrizePool
+7- http://locahost/api/getPrizePool
 
 - a GET request
-  - note : triggerEndGame need to be called before calling this endPoint or an empty array will be returned `[]`
+  - note: triggerEndGame need to be called before calling this endPoint or an empty array will be returned `[]`
     - The response is an Array of Objects containing the results of the game
-      - only top 100 players will get prizes and the earned amount will be displayed in a column called gain.
+      - only the top 100 players will get prizes and the earned amount will be displayed in a column called gain.
+
+##Todos:
+
+- Changing the current Auth process that uses userId with **user name and
+  password**
+- Creating and configure map for mongoDB
+
+- Allowing only admin to add scores to players.
