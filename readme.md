@@ -140,7 +140,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 
 ---
 
-###Front End
+### Front End
 
 - On the login page you can either login by inserting a userId in the input
 
@@ -158,7 +158,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 - On the PrizePoolTable page if a week has already passed since the start of players playing and gaining scores Prizes will be distributed among 100 players according to what has been explained in the Overview sections.
   - For testing purposes, there is an anchor tag that is called "Click me" it will trigger the end of the game without the need to wait a whole week, which will reset everything and prizes will be distributed among the top 100 players.
 
-###Back End
+### Back End
 
 ---
 
@@ -168,7 +168,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 
 - Use a tool like [postman](https://www.postman.com/) to reach the API endpoints
 
-###The endpoints
+### The endpoints
 
 1- http://localhost/api/signup
 
@@ -225,7 +225,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
     - The response is an Array of Objects containing the results of the game
       - only the top 100 players will get prizes and the earned amount will be displayed in a column called gain.
 
-##Todos:
+## Todos:
 
 - Changing the current Auth process that uses userId with **user name and
   password**
