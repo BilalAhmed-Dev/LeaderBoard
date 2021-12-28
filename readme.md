@@ -56,7 +56,7 @@ To run the application locally follow the steps below
 
 ---
 
-**Cloud Deployment diagram architecture** : [LeaderBoardDiagram.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/LeaderBoardDiagram.drawio) download and open with a tool like [diagrams](https://app.diagrams.net/)
+**Cloud Deployment Architecture diagram** : [Fullstack Leaderboard application architecture.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/docs/Fullstack-Leaderboard-application-architecture.drawio) download and open with a tool like [diagrams](https://app.diagrams.net/)
 
 The cloud deployment guide uses Azure AKS service, you need to have a valid Azure subscription and sufficient access to the required services.
 
@@ -227,8 +227,18 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 
 ## Todos:
 
-- Changing the current Auth process that uses userId with **user name and
-  password**
-- Creating and configure map for mongoDB
+- Implement proper auth using OAuth 2.0 and user sessions
 
-- Allowing only admin to add scores to players.
+- Migrate mongo init to a proper config map
+
+- Create admin users
+
+- implement mongoDB replica sets
+
+- Code imporvements clean up Kendo theme project
+
+- Code improvements remove static styling
+
+- Code improvements remove static configuration
+
+- Code improvements add unit testing
