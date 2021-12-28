@@ -5,6 +5,8 @@
 This is a horizontally scalable leaderboard application for a game that has active players. Leaderboard will be sorted according to the money each player has earned since the start of the week. The leaderboard will reset each week **or once the Click here anchor is clicked**" for testing purposes". Once the
 Leaderboard resets, the top 100 players will be rewarded with in-game money according to their rankings and everything will start over.
 
+![](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/docs/Fullstack-Leaderboard-application-architecture-image.png?raw=true)
+
 ### Application Features:
 
 ---
