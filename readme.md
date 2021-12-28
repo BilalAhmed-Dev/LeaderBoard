@@ -133,7 +133,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 - Navigate to the k8s folder in the repo using cd k8s
 
 ```
-  Kubectl apply -f ./leaderboard-all-in-one-yaml
+  kubectl apply -f ./leaderboard-all-in-one-yaml
 ```
 
 ### How to use the application
