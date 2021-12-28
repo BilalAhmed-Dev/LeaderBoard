@@ -2,8 +2,8 @@
 
 ---
 
-This is a horizontally scalable leaderboard application for a game that has active players. Leaderboard will be sorted according to the money each player has earned since the start of the week. The leaderboard will reset each week **or once the Click here anchor is clicked**" for testing purposes". Once the
-Leaderboard resets, the top 100 players will be rewarded with in-game money according to their rankings and everything will start over.
+This is a horizontally scalable leaderboard application for a game that has active players. Leaderboard will be sorted according to the money each player has earned since the start of the week. The leaderboard will reset each week **or once the Click here anchor
+is clicked**" for testing purposes". Once the Leaderboard resets, the top 100 players will be rewarded with in-game money according to their rankings and everything will start over.
 
 ![](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/docs/Fullstack-Leaderboard-application-architecture-image.png?raw=true)
 
@@ -54,13 +54,11 @@ To run the application locally follow the steps below
 1. chmod 777 quickstart.sh
 2. ./quickstart.sh
 
-### Cloud Deployment Guide
+**Cloud Deployment Guide**
 
----
+- Cloud Deployment Architecture diagram : [Fullstack Leaderboard application architecture.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/docs/Fullstack-Leaderboard-application-architecture.drawio) download and open with a tool like [diagrams](https://app.diagrams.net/)
 
-**Cloud Deployment Architecture diagram** : [Fullstack Leaderboard application architecture.drawio](https://github.com/BilalAhmed-Dev/FullStack-Leaderboad-Challenge/blob/master/docs/Fullstack-Leaderboard-application-architecture.drawio) download and open with a tool like [diagrams](https://app.diagrams.net/)
-
-The cloud deployment guide uses Azure AKS service, you need to have a valid Azure subscription and sufficient access to the required services.
+- The cloud deployment guide uses Azure AKS service, you need to have a valid Azure subscription and sufficient access to the required services.
 
 Login to Azure and open azure cloud shell, for this example we are using the bash terminal
 
@@ -135,7 +133,7 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 - Navigate to the k8s folder in the repo using cd k8s
 
 ```
-  Kubectl apply -f ./deployment.yaml
+  Kubectl apply -f ./leaderboard-all-in-one-yaml
 ```
 
 ### How to use the application
