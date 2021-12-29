@@ -7,13 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import useFetch from "../CustomHooks/useFetch";
 
-let config = {
-  method: "post",
-  url: "http://52.142.17.13/api/getTop100",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-};
 const Dashboard = () => {
   const dispatch = useDispatch();
 
@@ -58,7 +51,7 @@ const Dashboard = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       console.log("Dispatched new getTop100");
-      dispatch(geTopHundred(config));
+      dispatch(geTopHundred("http://52.142.17.13/api/getTop100", Id));
     }, 10000);
 
     return () => clearInterval(intervalId);
