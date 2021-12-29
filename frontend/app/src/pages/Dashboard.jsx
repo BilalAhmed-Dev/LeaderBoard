@@ -59,7 +59,7 @@ const Dashboard = () => {
     const intervalId = setInterval(() => {
       console.log("Dispatched new getTop100");
       dispatch(geTopHundred(config));
-    }, 10000);
+    }, 3000);
 
     return () => clearInterval(intervalId);
   }, []);
