@@ -234,6 +234,8 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 - Create admin users
 
 - implement mongoDB replica sets
+ 
+- implement pagination
 
 - Code imporvements clean up Kendo theme project
 
