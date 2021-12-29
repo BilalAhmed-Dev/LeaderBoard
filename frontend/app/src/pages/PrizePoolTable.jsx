@@ -1,16 +1,13 @@
 import * as React from "react";
 
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
-import useFetch from "../CustomHooks/useFetch";
 import { getAwards } from "../reduxActions/awards";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { endAndDistributePrize } from "../reduxActions/endGame";
 
-let config = {
-  method: "get",
-  url: "http://52.142.17.13/api/getPrizePool",
-};
 const PrizePoolTable = () => {
+  const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
   const { awardsResult, loading: awardsLoading } = useSelector(
     (state) => state.Awards
@@ -18,11 +15,12 @@ const PrizePoolTable = () => {
 
   console.log("AwardsRes : ", awardsResult);
 
-  const { dataFromFetch, loading } = useFetch(config);
   const endGameHandler = () => {
     dispatch(endAndDistributePrize());
+    setloading(true);
     setTimeout(() => {
       dispatch(getAwards("http://52.142.17.13/api/getPrizePool"));
+      setloading(false);
     }, 3000);
   };
 
