@@ -7,6 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import useFetch from "../CustomHooks/useFetch";
 
+let config = {
+  method: "post",
+  url: "http://52.142.17.13/api/getTop100",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+};
 const Dashboard = () => {
   const dispatch = useDispatch();
 
@@ -28,7 +35,10 @@ const Dashboard = () => {
   //test
 
   const { dataFromFetch, loading } = useFetch(config, Id);
-
+  
+  if(topHundredResult === null) {
+     topHundredResult = dataFromFetch
+  }
   const rowRender = (trElement, props) => {
     const IdDoesMatch = props.dataItem._id === userId;
     const green = {
