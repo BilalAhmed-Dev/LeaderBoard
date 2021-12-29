@@ -22,8 +22,6 @@ const Dashboard = () => {
     (state) => state.top100
   );
 
-  console.log(topHundredResult);
-
   // const { data: endGameRes } = useSelector((state) => state.endGame);
   // console.log("data: ", endGameRes);
 
@@ -35,10 +33,7 @@ const Dashboard = () => {
   //test
 
   const { dataFromFetch, loading } = useFetch(config, Id);
-  
-  if(topHundredResult === null) {
-     topHundredResult = dataFromFetch
-  }
+
   const rowRender = (trElement, props) => {
     const IdDoesMatch = props.dataItem._id === userId;
     const green = {
@@ -84,7 +79,13 @@ const Dashboard = () => {
           ) : (
             <>
               <Grid
-                data={topHundredResult ? topHundredResult : null}
+                data={
+                  topHundredResult
+                    ? topHundredResult
+                    : dataFromFetch
+                    ? dataFromFetch
+                    : null
+                }
                 rowRender={rowRender}
               >
                 <GridColumn title="User Name" field="userName" />
@@ -102,3 +103,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
