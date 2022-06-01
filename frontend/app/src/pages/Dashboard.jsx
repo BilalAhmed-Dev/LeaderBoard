@@ -9,7 +9,7 @@ import useFetch from "../CustomHooks/useFetch";
 
 let config = {
   method: "post",
-  url: "http://52.142.17.13/api/getTop100",
+  url: "http://localhost:8080/api/getTop100",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
   },
@@ -56,7 +56,7 @@ const Dashboard = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       console.log("Dispatched new getTop100");
-      dispatch(geTopHundred("http://52.142.17.13/api/getTop100", Id));
+      dispatch(geTopHundred("http://localhost:8080/api/getTop100", Id));
     }, 10000);
 
     return () => clearInterval(intervalId);

@@ -6,7 +6,7 @@ var qs = require("qs");
 export const endAndDistributePrize = () => async (dispatch) => {
   var configOfEndGame = {
     method: "post",
-    url: "http://52.142.17.13/api/triggerEndGame",
+    url: "http://localhost:8080/api/triggerEndGame",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },

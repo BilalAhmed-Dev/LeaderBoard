@@ -19,7 +19,7 @@ const PrizePoolTable = () => {
     dispatch(endAndDistributePrize());
     setloading(true);
     setTimeout(() => {
-      dispatch(getAwards("http://52.142.17.13/api/getPrizePool"));
+      dispatch(getAwards("http://localhost:8080/api/getPrizePool"));
       setloading(false);
     }, 3000);
   };

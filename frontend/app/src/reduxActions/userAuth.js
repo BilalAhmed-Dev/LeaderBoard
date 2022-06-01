@@ -10,7 +10,7 @@ export const login = (password) => async (dispatch) => {
 
   var config = {
     method: "post",
-    url: "http://52.142.17.13/api/login",
+    url: "http://localhost:8080/api/login",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -32,7 +32,7 @@ export const logOut = (id) => async (dispatch) => {
     });
     var config = {
       method: "post",
-      url: "http://52.142.17.13/api/logout",
+      url: "http://localhost:8080/api/logout",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
