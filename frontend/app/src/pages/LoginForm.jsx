@@ -9,7 +9,7 @@ const LoginForm = () => {
     <div id="Info" className="info-page main-content">
       <div className="content">
         <div className="section-1">
-          <h1>PANTEON Games</h1>
+          <h1>LeaderBoard</h1>
           <h2>Please enter your User Id</h2>
           <div className="button-group">
             <KendoForm />

@@ -15,7 +15,7 @@ export const enMessages = {
     teamCalendar: "Team Calendar",
     saveChanges: "Save Changes",
     cancel: "Cancel",
-    warehouse: "PANTEON LEADERBOARD",
+    warehouse: "LeaderBoard LEADERBOARD",
     startFreeTrial: "Start Free Trial",
     buyNow: "Buy Now",
     getSource: "Get the source code on GitHub",

@@ -37,7 +37,7 @@ export const Header = (props) => {
         </div>
 
         <div className="title">
-          <h1>PANTEON Games</h1>
+          <h1>LeaderBoard</h1>
         </div>
       </div>
     </header>
