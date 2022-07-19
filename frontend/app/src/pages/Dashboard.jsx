@@ -21,7 +21,7 @@ const Dashboard = () => {
   const { topHundredResult, loading: top100Loading } = useSelector(
     (state) => state.top100
   );
-
+console.log(status, userId)
   // const { data: endGameRes } = useSelector((state) => state.endGame);
   // console.log("data: ", endGameRes);
 

@@ -20,6 +20,8 @@ export const login = (password) => async (dispatch) => {
     const { data: item } = await axios(config);
     console.log(item);
     dispatch(UserAuthActions.UserIsAuthenticated({ item, password }));
+    alert("You have logged in successfully!")
+    window.location = 'http://localhost/#/dashboard'
   } catch (error) {
     console.log(error);
   }

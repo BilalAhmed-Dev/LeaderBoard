@@ -1,8 +1,5 @@
-let dotenv= require('dotenv');
-const async=require('async');
 const Mongo= require('../models/mongodb');
 let redis = require('../models/redis');
-let index=require('../app');
 
 let mongoDb=new Mongo();
 const redisDb= new redis(); 

@@ -29,7 +29,7 @@ run() {
   clean
   
   echo "Running docker..."
-  docker-compose up --build
+  docker compose up --build
 }
 
 stop_existing() {

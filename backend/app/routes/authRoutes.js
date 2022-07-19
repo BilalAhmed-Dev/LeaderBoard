@@ -20,7 +20,7 @@ app.post('/api/login', (req, res) => {
     let userId = mongoDb.objectID(req.body.userId);
     //Validate user informatoin and return login status
     validateUserLogin(userId, function (callback) {
-        res.send({ 'User login status': callback });
+        res.send({ status: callback });
     });
 });
 

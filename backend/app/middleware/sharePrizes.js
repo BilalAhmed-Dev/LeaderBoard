@@ -1,5 +1,3 @@
-const { mongoDb, redisDb } = require("../app");
-
 //End Game and Distribute Prizes - Used for manaul override of end of week functionality (For testing purposes only)
 function sharePrizes(doc, totalGains, gameName, callb) {
     awardList = [];

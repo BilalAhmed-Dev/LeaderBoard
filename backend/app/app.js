@@ -1,7 +1,5 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let schedule = require('node-schedule');
-const async = require('async')
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 let app = express();
@@ -18,6 +16,7 @@ exports.redisDb = redisDb;
 let mongoDb = new Mongo();
 exports.mongoDb = mongoDb;
 
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Setup listening port

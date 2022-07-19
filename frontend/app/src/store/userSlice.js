@@ -10,7 +10,7 @@ const userAuth = createSlice({
       state.loading = false;
       state.isAuthenticated = true;
       state.userId = action.payload.password;
-      state.status = action.payload.status;
+      state.status = action.payload.item.status;
     },
 
     LogOutUser(state, action) {

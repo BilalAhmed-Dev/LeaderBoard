@@ -159,20 +159,20 @@ app.post("/api/triggerEndGame", (req, res) => {
 
     //Get aggregated player ratings from mongo DB
     mongoDb.getAggregatedRatings()
-    .then(function(callback){
-        console.log(callback);
-        if(callback){
-            let totalGains=callback.totalGains;
+    .then((res) => {
+        console.log(res);
+        if(res){
+            let totalGains=res.totalGains;
             if(0<totalGains){
                 //Take 2% of total gains
                 totalGains=totalGains * 0.02;
                 //Get top 100 Player list from redis
-                redisDb.getByKeyRedis('top100Player',function(doc){
+                redisDb.getByKeyRedis('top100Player',(doc) => {
                     sharePrizes(doc,totalGains,currentGameName,
                         list=>{
-                            mongoDb.saveGameAwards(list,function(callback){
+                            mongoDb.saveGameAwards(list,(res) => {
                               // Reset all records from collection
-                                 mongoDb.collection.updateMany({},{$set:{gain:0,diff:0,rank:0}},(exception,res)=>{
+                                 mongoDb.collection.updateMany({},{$set:{gain:0,diff:0,rank:0}},(exception,res) => {
                                      if(exception) throw new Error(exception);
                                      weekStartedFlag=true;
                                  })   

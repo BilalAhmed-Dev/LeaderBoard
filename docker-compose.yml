@@ -6,12 +6,21 @@ services:
     build: ./backend/
     ports:
       - '8080:8080'
+    volumes:
+    # below is correct
+    # problem is env.docker of backend is undefined
+      - ./backend/app:/opt/develop/app/leaderboard
+      - /opt/develop/app/leaderboard/node_modules
+      - ./backend/app/env.docker:/opt/develop/app/leaderboard/.env
   frontend:
     container_name: frontend
     restart: always
     build: ./frontend/
     ports:
       - '80:3000'
+    volumes:
+      - ./frontend/app:/app
+      - /app/node_modules
     stdin_open: true
   mongo:
       container_name: mongodb

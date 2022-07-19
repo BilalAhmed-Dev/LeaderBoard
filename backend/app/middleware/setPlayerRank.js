@@ -1,5 +1,4 @@
 const { mongoDb, redisDb } = require("../app");
-const async = require('async')
 
 //Set player rank value, called via REST API
 async function setPlayerRank(player, lastRank, callb) {

@@ -1,5 +1,5 @@
+// dotenv is required to load environment variables
 const dotenv = require('dotenv').config();
-const async = require('async')
 const MongoClient = require('mongodb').MongoClient;
 let ObjectID = require('mongodb').ObjectID;
 
@@ -7,17 +7,17 @@ const uri = process.env.DB_URL_MONGO;
 let mongoDB=new MongoClient(uri, { useNewUrlParser: true });
 
 class _mongodb{
-    constructor(collName){
+    constructor(){
         //Configure Mongo DB Connector
-        mongoDB.connect((exception,client) => {
-            if(exception){
-                console.log(exception);
+        mongoDB.connect((error,client) => {
+            if(error){
+                console.log(error);
                 mongoDB.close();
             }
-            //Setup db conntion string using environment variables
+            // leaderboard DB
             this.db=mongoDB.db(process.env.DB_NAME_MONGO);
             //Setup default collection
-            this.collection = this.db.collection(collName || process.env.DB_BASE_COL_MONGO);
+            this.collection = this.db.collection(process.env.DB_BASE_COL_MONGO);
             //Setup award collection
             this.gameAwardColl = this.db.collection(process.env.DB_PRIZE_COL_MONGO);
             console.log("Successfully Connected mongodb !!");

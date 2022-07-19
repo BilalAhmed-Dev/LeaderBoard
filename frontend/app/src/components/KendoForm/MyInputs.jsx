@@ -1,26 +1,17 @@
 import React from "react";
 import { Form, Field, FormElement } from "@progress/kendo-react-form";
 import { login } from "../../reduxActions/userAuth";
-import { useAlert } from "react-alert";
-import { useSelector } from "react-redux";
-
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Input } from "@progress/kendo-react-inputs";
 
 export const KendoForm = () => {
-  const alert = useAlert();
   const history = useHistory();
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.userAuth);
 
   const handleSubmit = (dataItem) => {
     console.log(dataItem);
     dispatch(login(dataItem.userId));
-    if (status === "user not found!") {
-      alert.show(status);
-    }
-    history.push("/dashboard");
   };
   const handleSkip = () => {
     history.push("/dashboard");
