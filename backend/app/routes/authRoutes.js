@@ -9,7 +9,8 @@ const { savePlayerToDb } = require("../middleware/savePlayerToDb");
 app.post('/api/signup', (req, res) => {
     let userName = req.body.userName;
     let age = req.body.age;
-    savePlayerToDb(userName, age, (callback) => {
+    let country = req.body.country || null
+    savePlayerToDb(userName, age,country, (callback) => {
         res.send({ 'New User has been created successfully, User Id': callback });
     });
 });

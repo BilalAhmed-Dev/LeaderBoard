@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { geTopHundred } from "../reduxActions/topHundredAction.js";
-import { CustomCell } from "../components/KendoGrid/CustomKendoCell.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import useFetch from "../CustomHooks/useFetch";
@@ -92,7 +91,6 @@ console.log(status, userId)
                 <GridColumn title="Country" field="country" />
                 <GridColumn title="Money" field="gain" />
                 <GridColumn title="Rank" field="rank" />
-                <GridColumn title="Daily Diff" cell={CustomCell} field="diff" />
               </Grid>
             </>
           )}

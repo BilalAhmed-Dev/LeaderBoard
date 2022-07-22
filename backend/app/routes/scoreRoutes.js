@@ -2,83 +2,13 @@ const { app, redisDb, mongoDb } = require("../app");
 const async = require('async')
 
 //Import Services
-const schedulingService = require('../services/scheduling-service');
 
 //Import controllers
 const { queryRedisDb } = require("../middleware/queryRedisDb");
 const { getUserRankList } = require("../middleware/getUserRankList");
-const { setPlayerRank } = require("../middleware/setPlayerRank");
 const { sharePrizes } = require("../middleware/sharePrizes");
 
-app.post('/api/addNewScore', (req, res) => {
-    //Check if week has been started
-    if (schedulingService.isWeekStarted()) {
-        //Collect User information from request
-        let userId = req.body.userId;
-        let score = req.body.score;
-        let currentDate = new Date();
-        //Get User by ID
-        redisDb.getPlayerByIdRedis('online', userId, (callback) => {
-            //Check if user exists and loggedin
-            if (callback) {
-                //Configure Player Information
-                let playerObject = callback;
-                let lastUpdateTime = new Date(playerObject.lastModified);
-                let Diff = (currentDate - lastUpdateTime) / 1000;
-                
-                //Check Score Difference
-                if (1.00 > Diff || 1 === playerObject['readOnly']) {
-                    if (1.00 < Diff) {
-                        //Set Player Read Only Status
-                        playerObject['readOnly'] = 0;
-                        //Update Player
-                        redisDb.savetoRedis('online', userId, playerObject, (callback) => { });
-                    }
-                    res.send({ 'status': 'Score updated successfully' });
-                }
-                else {
-                    //Set Player Read Only Status
-                    playerObject['readOnly'] = 1;
-                    //Update Player Information
-                    redisDb.savetoRedis('online', userId, playerObject, (callback) => { });
-                    //Set Player Scofre
-                    playerObject.gain += parseInt(score);
-                    //Get Player Rank
-                    let lastPlayerRank = playerObject.rank;
-                    //Set Player Last Modified Time
-                    playerObject.lastModified = currentDate.toLocaleString();
-                    //Create Mongo Db Query Object
-                    let queryObject = { gain: { $gt: playerObject.gain } };
-                    let sort = { gain: 1 };
-                    let limit = 1;
-                    mongoDb.findAsync(queryObject, sort, limit, function (callback) {
-                        if (callback.length > 0) {
-                            previousPlayer = callback[0];
-                            playerObject.rank = previousPlayer.rank + 1;
-                            if (0 < lastPlayerRank)
-                                playerObject.diff = lastPlayerRank - playerObject.rank;
-                        }
-                        else {
-                            playerObject.rank = 1;
-                            if (0 < lastPlayerRank)
-                                playerObject.diff = lastPlayerRank - playerObject.rank;
 
-                        }
-                        //Update Player Rank
-                        setPlayerRank(playerObject, lastPlayerRank, function (callback) {});
-                    })
-                    res.send({ 'status': 'Score updated successfully' });
-                }
-            }
-            else {
-                res.send({ 'status': 'Player is not online!' });
-            }
-        })
-    }
-    else {
-        res.send({ 'status': 'Unable to update score, Game week is finished' })
-    }
-});
 
 app.post('/api/getTop100', (req, res) => {
     //Get user id from request body
@@ -172,7 +102,7 @@ app.post("/api/triggerEndGame", (req, res) => {
                         list=>{
                             mongoDb.saveGameAwards(list,(res) => {
                               // Reset all records from collection
-                                 mongoDb.collection.updateMany({},{$set:{gain:0,diff:0,rank:0}},(exception,res) => {
+                                 mongoDb.collection.updateMany({},{$set:{gain:0,rank:0}},(exception,res) => {
                                      if(exception) throw new Error(exception);
                                      weekStartedFlag=true;
                                  })   

@@ -6,6 +6,8 @@ function validateUserLogin(userId, callb) {
         if (exception)
             throw exception;
         if (playerObject) {
+            // set player status to online in redis cache
+            // I could search userId in redis and know if hes online
             redisDb.savetoRedis('online', userId.toHexString(), playerObject, function (callback) {
                 callb(callback);
             });
