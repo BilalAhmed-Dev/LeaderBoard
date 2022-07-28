@@ -2,6 +2,7 @@ version: '3'
 services:
   backend:
     container_name: backend
+    # not connecting problem is fixed by simply saving(CTRL + S) in any backend file
     restart: always
     build: ./backend/
     ports:

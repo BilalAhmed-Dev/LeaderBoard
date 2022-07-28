@@ -17,8 +17,10 @@ class _mongodb{
             // leaderboard DB
             this.db=mongoDB.db(process.env.DB_NAME_MONGO);
             //Setup default collection
+            // db_collection
             this.collection = this.db.collection(process.env.DB_BASE_COL_MONGO);
             //Setup award collection
+            // prize_collection
             this.gameAwardColl = this.db.collection(process.env.DB_PRIZE_COL_MONGO);
             console.log("Successfully Connected mongodb !!");
         });
@@ -28,7 +30,7 @@ class _mongodb{
     closeDbConnection(){
         mongoDB.close();
     }
-    
+    // turn string into ObjectId
     objectID(objectId){
         if(objectId) return new ObjectID(objectId);
         else         return null;
@@ -78,7 +80,7 @@ class _mongodb{
             if(res.insertedCount>0){
                 console.log("Top 100's awards has been shared.");
             }
-            callb(res.insertedCount);
+            callb();
         });
     }
 

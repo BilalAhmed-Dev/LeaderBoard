@@ -10,7 +10,7 @@ COPY ./app/package.json ./
 # Run npm install - install the npm dependencies
 RUN npm install
 
-# Copy application source
+# Copy application source, will copy env.docker too (useless) I need .env
 COPY ./app/ .
 
 # Copy .env.docker to workdir/.env - use the docker env

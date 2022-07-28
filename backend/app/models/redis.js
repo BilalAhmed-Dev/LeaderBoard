@@ -15,7 +15,10 @@ class _redis{
             console.log('connected redis server');
         });
     }
-
+//  there is three keys
+//  1 online   // for user
+//  2 top100Player
+//  3 prizePool
     //Save object to redis
     savetoRedis(key,id,val,callb) {
         let today = new Date().toLocaleString();

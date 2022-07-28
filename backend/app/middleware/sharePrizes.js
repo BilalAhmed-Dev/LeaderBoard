@@ -2,9 +2,8 @@
 function sharePrizes(doc, totalGains, gameName, callb) {
     awardList = [];
     if (doc) {
-      let keys = Object.keys(doc);
+      let keys = Object.keys(doc); // keys are positions of each document from 0 to 100
       let len = keys.length; // expected length =100
-      test = 0.0;
       let topThree = 0.0;
   
       for (let i = 0; i < len; i++) {
@@ -19,10 +18,10 @@ function sharePrizes(doc, totalGains, gameName, callb) {
           gained = totalGains * 0.1;
           totalGains = totalGains - topThree - gained;
         } else {
-          gained = ((len + 1 - i) * totalGains) / (((len - 3) * (len - 2)) / 2); // for remaining 97 gamer: n(n+1)/2
+          gained = 0;
         }
         console.log("player rank", i);
-        let gamer = JSON.parse(doc[keys[i]]);
+        let gamer = JSON.parse(doc[keys[i]]); // keys is an array of values keys[1] will return 2 so its basically doc[2]
         awardList.push({
           userName: gamer.userName,
           gained: gained,

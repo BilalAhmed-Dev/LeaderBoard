@@ -17,7 +17,7 @@ app.post('/api/getTop100', (req, res) => {
     mongoDb.collection.find({ rank: { $gt: 0 } }).sort({ rank: 1 }).limit(100).toArray((err, result) => {
         result.forEach(o => {
             //Save result to redis
-            redisDb.savetoRedis('top100Player', o.rank, o, function (callback) { });
+            redisDb.savetoRedis('top100Player', o.rank, o, (callback) => null);
         });
 
         //List Results from redis
@@ -56,7 +56,7 @@ app.get("/api/getPrizePool", (req, res) => {
       .sort({ rank: 1 })
       .toArray((err, result) => {
         result.forEach((o) => {
-          redisDb.savetoRedis("prizePool", o.rank, o, function (cb) {});
+          redisDb.savetoRedis("prizePool", o.rank, o, (callback) => null);
         });
         queryRedisDb("prizePool", function (cb) {
           let list = [];
@@ -78,14 +78,11 @@ app.get("/api/getPrizePool", (req, res) => {
 //End Game and Distribute Prizes - Used for manaul override of end of week functionality (For testing purposes only)
 app.post("/api/triggerEndGame", (req, res) => {
     // Configure Job Values, Set Game Date
-    weekStartedFlag=false;
     let today = new Date();
-    let nextDay = new Date(today);
-    nextDay.setDate(today.getDate()+1);
     let currentGameDate=new Date(today);
     currentGameDate.setDate(today.getDate()-7);
     //Create unique name for the current game
-    let currentGameName=currentGameDate.getFullYear().toString()+(currentGameDate.getMonth+1).toString()+currentGameDate.getDate().toString();
+    let currentGameName=currentGameDate.getFullYear().toString()+(currentGameDate.getMonth() + 1).toString()+currentGameDate.getDate().toString();
 
     //Get aggregated player ratings from mongo DB
     mongoDb.getAggregatedRatings()
@@ -98,13 +95,11 @@ app.post("/api/triggerEndGame", (req, res) => {
                 totalGains=totalGains * 0.02;
                 //Get top 100 Player list from redis
                 redisDb.getByKeyRedis('top100Player',(doc) => {
-                    sharePrizes(doc,totalGains,currentGameName,
-                        list=>{
-                            mongoDb.saveGameAwards(list,(res) => {
+                    sharePrizes(doc,totalGains,currentGameName, (list)=>{
+                            mongoDb.saveGameAwards(list,() => {
                               // Reset all records from collection
                                  mongoDb.collection.updateMany({},{$set:{gain:0,rank:0}},(exception,res) => {
                                      if(exception) throw new Error(exception);
-                                     weekStartedFlag=true;
                                  })   
 
                             });
@@ -115,10 +110,8 @@ app.post("/api/triggerEndGame", (req, res) => {
         }
     })
     .then(function(){
-       redisDb.deleteByKeyRedis('online',function(callback){
-            console.log('Online List Cleared!');
-        });
         redisDb.deleteByKeyRedis('top100Player',function(callback){
+            // only deleted in RedisDB the data remains in MongoDB
             console.log('Top100 Player List Cleared!');
         });
     })
