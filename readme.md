@@ -32,7 +32,7 @@ is clicked**" for testing purposes". Once the Leaderboard resets, the top 100 pl
 1. player 1 will get 20% of the pool
 2. player 2 will get 15% of the pool
 3. player 3 will get 10% of the pool
-4. The remaining prize will be given to the other players in the top 100 in order to the rank of the players.
+
 
 ### Deployment Guide
 
@@ -191,18 +191,9 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
   - userId=YourUserId
     - The response is `User Logged out Successfully`
 
-4- http://locahost/api/addNewScore
 
-- note : A **user must be logged in to add a score** to any other user
-- a POST request with this body data :
-  - userId=YourUserId
-  - score=TheDesiredScore
-    - The response is
-      `{ 'status': 'Score updated successfully'}`
-    - or The response is
-      ` {'status': 'Player is not online!'}`"whichs means you need to log in first"
 
-5- http://locahost/api/getTop100
+4- http://locahost/api/getTop100
 
 - a POST request with body data Or **nothing at all** :
 
@@ -212,13 +203,13 @@ az acr build --registry TempDemoACR --image react-clock-basic:v1 .
 
 - The response is an Array of Objects containing the top 100 players sorted in ascending order from 1 to 100
 
-6- http://locahost/api/triggerEndGame
+5- http://locahost/api/triggerEndGame
 
 - a POST request with empty or no body data.
   - The response is `Ok!`
     - which means the end of the week has been triggered and the PrizePoolTable has been filled with data displaying the results
 
-7- http://locahost/api/getPrizePool
+6- http://locahost/api/getPrizePool
 
 - a GET request
   - note: triggerEndGame need to be called before calling this endPoint or an empty array will be returned `[]`
